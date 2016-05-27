@@ -42,7 +42,7 @@ public class IndShow extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		String cusid = "5"; //session.getAttribute("id");
+		String cusid = "1"; //session.getAttribute("id");
 		String[] params = new String[]{cusid};
 		
 		DBO db = new DBO();
@@ -59,7 +59,9 @@ public class IndShow extends HttpServlet {
 			if(conn!=null){
 				System.out.println("连接成功!");
 			}
-			sql = new String("SELECT * FROM indent WHERE cusid=? AND isPay='true'");
+			sql = new String("SELECT i.intime,c.comname,m.mername,c.comprice,i.count,i.purchase "+
+					"FROM indent i, commodity c, merchant m"+
+					"WHERE c.merid=m.merid AND i.comid=c.comid AND i.isPay ='true' AND i.cusid=?");
 			rs=db.executeQuery(sql, params);
 			if(!rs.next()){
 				System.out.println("无订单！");
@@ -77,10 +79,12 @@ public class IndShow extends HttpServlet {
 //					out.println("总额："+rs.getFloat(4));
 					
 					JSONObject temp = new JSONObject();
-					temp.put("comid", rs.getInt(1));
-					temp.put("cusid", rs.getInt(2));
-					temp.put("time", rs.getDate(3).toString());
-					temp.put("purchase", rs.getFloat(4));
+					temp.put("time", rs.getDate(1).toString());
+					temp.put("comname", rs.getString(2));
+					temp.put("mername", rs.getString(3));
+					temp.put("comprice", rs.getFloat(4));
+					temp.put("count", rs.getInt(5));
+					temp.put("purchase", rs.getFloat(6));
 					js.put(temp);
 				}
 			}
