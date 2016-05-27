@@ -1,0 +1,141 @@
+/* CSS Document */
+body,head{margin:0;padding:0;}
+body{
+	text-align:center;
+}
+/* ----------标题栏----------- */
+.head {
+	text-align:center;
+	background-color: #ffcc00;
+	width: 100%;
+	height:auto;
+}
+.navigation{
+	text-align:center;
+	text-decoration:none;
+	height:auto;
+	width:100px;
+}
+/* ----------导航栏----------- */
+.nav{
+	width:100%;
+	height:50px;
+	background:#211711;
+	font-size:14px;
+	z-index:9999;
+}
+.nav-content{
+	width:340px;
+	margin:auto;
+}
+.nav-content a{
+	float:left;
+	width:110px;
+	height:20px;
+	line-height:20px;
+	margin-top:15px;
+	text-align:center;
+	color:#b5a486;
+	text-decoration:none;
+	/*border-right:1px solid #6A5F4B;*/
+}
+.nav-content a:hover{	
+	color:#ffebc8;
+	/*background:#000;*/
+	text-decoration:none;
+}
+.nav-content .active{
+	color:#ffebc8;
+	/*background:#000;*/
+}
+/* ----------管理区----------- */
+.backgro{
+	width:100%;
+	height:800px;
+	background:#210500;
+	font-size:14px;
+	z-index:9999;
+}
+
+.rootcusrootset{
+	width:650px;
+	height:50px;
+	margin:0 auto;
+	float:left;
+	text-align:center;
+}
+.cusrootset1{
+	width:150px;
+	height:50px;
+	float:left;
+	text-align:center;
+}
+<!--.cusrootset2{
+	width:150px;
+	height:50px;
+	float:left;
+	text-align:center;
+}-->
+.cusrootset3{
+	width:80px;
+	height:50px;
+	float:left;
+	text-align:center;
+}
+.cusrootset4{
+	width:120px;
+	height:50px;
+	float:left;
+	text-align:center;
+}
+.cusrootset5{
+	width:150px;
+	height:50px;
+	float:left;
+	text-align:center;
+}
+.cusrootset6{
+	width:75px;
+	height:50px;
+	float:left;
+	text-align:center;
+}
+.mana{
+	width:150px;
+	float:right;
+}
+.button{
+	padding: 1px 5px;
+	color: #211711;
+	border:1px solid #211711;
+	border-radius: 5px;
+	background-color: #fff;
+	cursor: pointer;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+.button:hover{
+	color: #FFCC00;
+	background-color: #211711;
+}
+
+.allroot{
+	width:800px;
+	margin:0 auto;
+}
+.root1{
+	width:650px;
+	height:400px;
+	background-color:#FF5;
+	margin:auto;
+}
+.root2{
+	width:650px;
+	height:400px;
+	background:#FF5;
+	margin:auto;
+}
+
