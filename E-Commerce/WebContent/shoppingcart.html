@@ -2,9 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>大学生网上格子铺</title>
-<link rel="stylesheet" type="text/css" href="../css/shoppingcart.css"/>
-<script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="../js/shoppingcart.js"></script>
+<link rel="stylesheet" type="text/css" href="css/shoppingcart.css"/>
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/shoppingcart.js"></script>
+<script type="text/javascript" src="js/viewcart.js"></script>
 </head>
 
 <body>
@@ -24,6 +25,7 @@
 </div>
 <!--购物车-->
 <div class="cart">
+<dir id="addcart">
 <div class="carttitle">
 	<div class="title1">
         <label for="commess">商品信息</label>
@@ -39,33 +41,13 @@
        	<label id="comtotal">金额(元)</label>
     </div>
 </div>
-<br  />
+</dir>
 
-<div class="shoppingcart" id="shopping">
-	<div class="shoppingcart1">
-        <label id="comname">透明手机壳</label>
-    </div>
-    <div class="shoppingcart2">
-    	<p id="comprice">9.9</p>
-    </div>
-    <div class="shoppingcart3">
-  	<input type="number" id="comnumset" style="width: 100px; font: 20; height: 20px;" onclick="cul()"/>
-	</div>
-    <div class="shoppingcart4">
-    	<p id="purchase">35</p>
-    </div>
+<div class="showpay">
+	<p id="purchase">总额：元</p>
+    <input type="button" value="立即购买" onclick="sure2()" />
+</div><br/><br/><br/>
 
-    <br /><br />
-    <div class="shoppingcart5">
-    <form>
-    	<input type="button" onclick="hidetext()" value="删除" />
-    </form>
-    </div>
-    
-    <div class="showpay">
-<!--        <p class="">总共需要支付：0元</p>-->
-        <input type="button" value="立即购买" onclick="sure2()" />
-    </div>
 </div>
 </div>
 </body>

@@ -30,6 +30,7 @@
 <a href="ComShow">展示商品</a><br/>
 
 <a href="ViewCart">我的购物车</a><br/>
+<a href="DeleteCart">删除购物车</a><br/>
 
 <a href="Payment">支付</a><br/>
 
