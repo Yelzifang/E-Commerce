@@ -1,19 +1,12 @@
 // JavaScript Document
-//function sure1(){
-//	var ensure=confirm("是否修改信息？");
-//	if(ensure==ture){
-//		alert("修改成功！");
-//	}
-//	else{
-//		alert("未进行修改！");
-//	}
-//}
+
 function sure2()
 {
 	var sure=confirm("确认购买物品吗？");
 	if(sure==true)
 	{
-		alert("购买成功!");
+		Pay_SendRequest();
+		
 	}
 	else
 	{
@@ -44,6 +37,7 @@ function run(i){
       document.getElementById('iDBody1').style.display = "none";
       document.getElementById('iDBody2').style.display = "block";
       document.getElementById('iDBody3').style.display = "none";
+  	  ViewCart_SendRequest();
 	  break;
     }
     case 3:{

@@ -20,16 +20,16 @@ import org.json.JSONObject;
 import com.mysql.jdbc.Connection;
 
 /**
- * Servlet implementation class Payment
+ * Servlet implementation class DeleteCart
  */
-@WebServlet("/Payment")
-public class Payment extends HttpServlet {
+@WebServlet("/DeleteCart")
+public class DeleteCart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Payment() {
+    public DeleteCart() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,28 +39,29 @@ public class Payment extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		HttpSession session = request.getSession();
-		int id = (int) session.getAttribute("id");
-		String cusid = new String(""+id);
-		System.out.println("id:"+cusid);
-//		String comid = (String) request.getParameter("comid");
-//		String cusid = "1";
-		String comid = null;
-		String[] params =null;
-				
+//		HttpSession session = request.getSession();
+//		String cusid = (String) session.getAttribute("id");
+		String comid = request.getParameter("comid");
+		System.out.println("comid:"+comid);
+		String cusid = "1";
+		//String comid = "1";
+		
+		String[] params = new String[]{cusid,comid}; 
+		
 		DBO db = new DBO();
+		ResultSet rs = null;
 		String sql = null;
 		int n = 0;
-		
-		if(comid==null){
-			params = new String[]{cusid}; 
-			sql = new String("UPDATE indent SET isPay=true WHERE cusid=?");
-		}else{
-			params = new String[]{cusid,comid}; 
-			sql = new String("UPDATE indent SET isPay=true WHERE cusid=? AND comid=?");
-		}
 		
 		JSONObject json = new JSONObject();
 		JSONObject js= new JSONObject();
@@ -71,13 +72,16 @@ public class Payment extends HttpServlet {
 			if(conn!=null)
 				System.out.println("conn sucess!");
 			
+			sql = new String("DELETE FROM indent WHERE cusid=? AND comid=?");
+			
 			n=db.executeUpdate(sql, params);
-			if(n!=0){
-				System.out.println("支付成功！");
-				status = true;
-				detail = new String("支付成功！");
+			if(n==0){
+				detail = new String("删除失败！");
+				
 			}else{
-				detail = new String("支付失败！");
+				System.out.println("删除成功！");
+				status = true;
+				detail = new String("删除成功！");
 			}
 			json.put("status", status);
 			json.put("detail", detail);
@@ -88,13 +92,6 @@ public class Payment extends HttpServlet {
 				| IllegalAccessException | SQLException | JSONException e){
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 }

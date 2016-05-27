@@ -42,7 +42,10 @@ public class ViewCart extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		String cusid = "1"; //session.getAttribute("id");
+		//String cusid = "1";
+		int id = (int)session.getAttribute("id");
+		String cusid = new String(""+id);
+		System.out.print("id:"+cusid);
 		String[] params = new String[]{cusid};
 		
 		DBO db = new DBO();
@@ -60,11 +63,11 @@ public class ViewCart extends HttpServlet {
 			if(conn!=null){
 				System.out.println("连接成功!");
 			}
-			sql = new String("SELECT * FROM indent WHERE cusid=? AND isPay='false'");
+			sql = new String("SELECT commodity.comid,commodity.comname,commodity.comprice,indent.count,indent.purchase FROM indent,commodity WHERE indent.cusid=? AND isPay='false' And indent.comid=commodity.comid");
 			rs=db.executeQuery(sql, params);
 			if(!rs.next()){
-				out.println("购物车无商品！");
-				detail = new String("购物车无商品！");
+				System.out.println("购物车无商品！");
+				detail = new String("wo de fuck 购物车无商品！");
 			}else{
 				status = true;
 				detail = new String("查看购物车成功！");
@@ -76,9 +79,10 @@ public class ViewCart extends HttpServlet {
 //					out.println("总额："+rs.getFloat(4));
 					JSONObject temp = new JSONObject();
 					temp.put("comid", rs.getInt(1));
-					temp.put("cusid", rs.getInt(2));
-					temp.put("time", rs.getDate(3).toString());
-					temp.put("purchase", rs.getFloat(4));
+					temp.put("comname", rs.getString(2));
+					temp.put("comprice", rs.getInt(3));
+					temp.put("count", rs.getInt(4));
+					temp.put("purchase", rs.getFloat(5));
 					js.put(temp);
 				}
 			}
