@@ -6,9 +6,9 @@ var request=null;
 
 //弹出登录框
 function openLogin(){
-	$('body').css("overflow","hidden")
-	var upLogin = document.getElementById("logincontainer");
-	upLogin.style.display = "block";
+$('body').css("overflow","hidden")
+var upLogin = document.getElementById("logincontainer");
+upLogin.style.display = "block";
 }
 //关闭登录框
 function closeLogin(){
@@ -20,6 +20,7 @@ function closeLogin(){
 function CreateLoginRequest(){
 	var req=null;
 	
+	
 	if(window.XMLHttpRequest)
 		req=new XMLHttpRequest();
 	else
@@ -29,7 +30,6 @@ function CreateLoginRequest(){
 }
 //创建登录参数
 function CreateLoginParamter(){
-	
 	var username=document.getElementById("username").value;
 	var password=document.getElementById("password").value;
 	var identitys=document.getElementsByName("identity");
@@ -42,7 +42,7 @@ function CreateLoginParamter(){
 		}
 	}
 	
-	//alert("username="+username+"&password="+password+"&identity="+identity);
+//	alert("?username="+username+"&password="+password+"&identity="+identity);
 	
 	return "username="+username+"&password="+password+"&identity="+identity;
 }
@@ -68,11 +68,22 @@ function parseLoginRequest(){
 		if(login_msg.status){
 			var user_msg=login_msg.message;
 			var name=user_msg.username;
+			
 			alert(name);
 			
 			var login_li=document.getElementById("login_li");
+			var register_li=document.getElementById("register_li");
+
+			login_li.innerHTML="<a >"+name+"</a>";
+			login_li.onclick=function jumpPersonHtml(){
+				alert("个人中心");
+			};
 			
-			login_li.innerHTML="<a href ='usercenter.html'>"+name+"</a>";
+			register_li.innerHTML="<a > 注销</a>";
+			register_li.onclick=function LogoutHtml(){
+				alert("注销");
+				window.location.href="Logout";
+			};
 			
 		}
 		else
