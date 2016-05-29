@@ -15,12 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import k.dao.DBO;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.mysql.jdbc.Connection;
+
+import k.dao.DBO;
 
 /**
  * Servlet implementation class CreateInd
@@ -28,59 +28,64 @@ import com.mysql.jdbc.Connection;
 @WebServlet("/CreateInd")
 public class CreateInd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CreateInd() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	public CreateInd() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
 		response.setContentType("text/html;charset=utf-8");
+
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-//		String cusid = (String) session.getAttribute("id");
-//		String comid = (String) request.getParameter("comid");
-		String cusid = "2";
-		String comid = "3";
+		int cusid = (int) session.getAttribute("id");
+		String comid = (String) request.getParameter("comid");
+		// String cusid = "1";
+		// String comid = "3";
 		Date currDate = (Date) Calendar.getInstance().getTime();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String dateTime = sdf.format(currDate);
-		int c = 1;//new Integer(request.getParameter("count"));
-		String count = new String(""+c);
-		float comprice =5;//new Float(request.getParameter("comprice"));
-		float pc = comprice*c;
-		String purchase = new String(""+pc);
+		int count = new Integer(request.getParameter("count"));
+		float comprice = new Float(request.getParameter("comprice"));
+		float pc = comprice * count;
+		// float pc = 100;
+		String purchase = new String("" + pc);
 		System.out.print(purchase);
-		String[] params = new String[]{cusid,comid,count,dateTime,purchase}; 
-		
+		String[] params = new String[] { String.valueOf(cusid), comid,
+				String.valueOf(count), dateTime, purchase };
+
 		DBO db = new DBO();
 		ResultSet rs = null;
 		String sql = null;
 		int n = 0;
-		
+
 		JSONObject json = new JSONObject();
-		JSONObject js= new JSONObject();
+		JSONObject js = new JSONObject();
 		Boolean status = false;
 		String detail = null;
-		try{
+		try {
 			Connection conn = (Connection) db.getConn();
-			if(conn!=null)
+			if (conn != null)
 				System.out.println("conn sucess!");
-			
-			sql = new String("INSERT INTO indent(cusid,comid,count,intime,purchase) values(?,?,?,?,?)");
-			
-			n=db.executeUpdate(sql, params);
-			if(n==0){
+
+			sql = new String(
+					"INSERT INTO indent(cusid,comid,count,intime,purchase) values(?,?,?,?,?)");
+
+			n = db.executeUpdate(sql, params);
+			if (n == 0) {
 				System.out.println("订单创建失败！");
 				detail = new String("订单创建失败！");
-			}else{
+			} else {
 				System.out.println("订单创建成功！");
 				status = true;
 				detail = new String("订单创建成功！");
@@ -90,17 +95,18 @@ public class CreateInd extends HttpServlet {
 			json.put("message", js);
 			out.println(json.toString());
 			db.closeAll();
-		}catch(ClassNotFoundException | InstantiationException
-				| IllegalAccessException | SQLException | JSONException e){
+		} catch (ClassNotFoundException | InstantiationException
+				| IllegalAccessException | SQLException | JSONException e) {
 			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		this.doGet(request, response);
 	}
-
 }
