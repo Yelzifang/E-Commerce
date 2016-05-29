@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8">
 <title>大学生网上格子铺</title>
-<link rel="stylesheet" type="text/css" href="../css/addgoods.css"/>
+<link rel="stylesheet" type="text/css" href="css/addgoods.css"/>
+<script src="js/AddGood.js"></script>
 </head>
-
 <body>
 <div class="addgoods">
 <div class="head">
@@ -16,29 +16,28 @@
 <br />
 <div class="shopping">
 <label for="comname">商品名称:&nbsp;</label>
-<input type="text" name="comname" /><br /><br />
+<input id="comname" type="text" name="comname" /><br /><br />
 <label for="comprice">商品单价:&nbsp;</label>
-<input type="text" name="comprice" /><br /><br />
+<input id="comprice" type="text" name="comprice" /><br /><br />
 <label for="comtotal">设置库存:&nbsp;</label>
-<input type="text" name="comtotal" /><br /><br />
+<input id="comtotal" type="text" name="comtotal" /><br /><br />
 <label for="comsort">商品类别:&nbsp;</label>
-<input type="text" name="comsort" /><br /><br />
+<input id="comsort" type="text" name="comsort" /><br /><br />
 <label for="comname">商品描述:&nbsp;</label>
-<textarea name="comdescribe" cols ="35" rows = "4"></textarea><br /><br />
+<textarea id="comdescribe" name="comdescribe" cols ="35" rows = "4"></textarea><br /><br />
 <label for="comimage">插入图片:&nbsp;</label>
-<input type="file" name="comimage" /><br />
+<input id="file" type="file" name="comimage" onchange="previewImg()" /><br />
 </div>
 <div class="imag">
-<img src="" alt="  " name="comimage" width="150" height="150" style="background-color: #A0A0A4" />&nbsp;&nbsp;
-<input type="button" value="预览" name="view" /><br /><br />
+<img id="img1" src="" alt="  " name="comimage" width="150" height="150" style="background-color: #A0A0A4" />&nbsp;&nbsp;
+<br /><br />
 </div>
 
 <div class="foot"><br />
-<button type="button" class="btn btn-info">确定</button><br /><br />
+<input type="button" value="确定" onclick="SendAddRequest()"/>
 </div> 
 </div>  
 </div>
-
 
 </body>
 </html>
