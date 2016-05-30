@@ -1,0 +1,77 @@
+/* CSS Document */
+
+#modification-container{
+	width:1000px;
+	height:480px;
+	margin:20px auto;
+	background:white;
+	border:1px solid #BBB;
+	border-radius:10px;
+	overflow:hidden;
+}
+
+#modification-mag{
+	width:400px;
+	height:400px;
+	margin:25px;
+
+	float:left;
+	overflow:hidden;
+}
+
+#modification-text{
+	width:525px;
+	height:400px;
+	margin:25px 25px 25px 0;
+	
+	float:right;
+
+}
+
+#modification-title{
+	padding:5px 10px 0 10px;
+	height:55px;
+	font-weight:bold;
+	font-size:20px;
+}
+#modification-describe{
+	padding:20px 10px 0 ;
+	height:120px;
+	
+	font-size:14px;
+}
+
+#modification-price{
+	padding:0 10px;
+	height:85px;
+
+	margin:0 10px;
+	line-height:40px;
+	font-size:15px;
+	border:1px solid #BBB;
+}
+
+#old-price{
+	text-decoration:line-through;
+}
+#privilege-price{
+	font-size:27px;
+	color:red;
+
+}
+#modification-up{
+	width:510px;
+	height:100px;
+	
+	margin:10px;
+}
+#modification-shopkeeper{
+	width:130px;
+	height:30px;
+	position:relative;
+	left:400px;
+	top:70px;
+	
+}
+
+

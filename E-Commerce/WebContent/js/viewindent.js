@@ -14,7 +14,7 @@ function ViewIndent_CreateRequest(){
 }
 
 function ViewIndent_SendRequest(){
-	alert("viewindent");
+	
 	request=ViewIndent_CreateRequest();
 	request.open("GET","http://localhost:8080/E-Commerce/IndShow",true);
 	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -25,17 +25,17 @@ function ViewIndent_SendRequest(){
 function ViewIndent_parseRequest(){
 	
 	if(request.status==200&&request.readyState==4){
-		alert(request.responseText);
+		
 		
 		var viewindent=JSON.parse(request.responseText);
 		
 		if(viewindent.status){
 			var indent_msg=viewindent.message;
-			alert(indent_msg.length);	
+				
 			
 			$("#addindent").empty();
 			for(i=0;i<indent_msg.length;i++){
-				alert("i="+i);
+				
 				var html ="<div class='commess' id='commes'>"+"" +
 				"<div class='ordertop'><label for='ordertime'>订单日期：&nbsp;</label>"+
 				"<label id='intime'>"+indent_msg[i].intime+"</label></div><div class='commess1'>"+
@@ -49,8 +49,6 @@ function ViewIndent_parseRequest(){
 				$("#addindent").append(html);
 				
 			}
-		
-
 			alert(cusself.detail);
 		}else{
 			alert(cusself.detail);

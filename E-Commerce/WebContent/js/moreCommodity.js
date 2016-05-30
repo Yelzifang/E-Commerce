@@ -69,7 +69,7 @@ function addElement(comid,comimage,comname){
 	 com_div.setAttribute("name", "com_div")
 	 com_div.setAttribute("class", "con");
 	 com_img.setAttribute("alt","更多....");
-	 com_img.setAttribute("src", "images/food.jpg");
+	 com_img.setAttribute("src", "ftp://root:qq609150968.@115.28.228.39/root/img/"+comimage);
 	 com_label.innerHTML=comname;
 	 
 	 com_div.appendChild(com_a);
@@ -130,12 +130,12 @@ function next_page(){
 	document.getElementById("showmore-page").value=page_label;
 }
 
-function check_page(){
-	
-	var page_label=document.getElementById("showmore-page").value;
-	
-	if(page_label<0)
-		alert("页数不能小于0");
-	
-	document.getElementById("showmore-page").value=1;
-}
+//function check_page(){
+//	
+//	var page_label=document.getElementById("showmore-page").value;
+//	
+//	if(page_label<0)
+//		alert("页数不能小于0");
+//	
+//	document.getElementById("showmore-page").value=1;
+//}

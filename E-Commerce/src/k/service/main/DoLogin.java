@@ -78,19 +78,15 @@ public class DoLogin extends HttpServlet {
 			Connection conn = db.getConn();
 			if (conn != null)
 				System.out.println("conn sucess!");
+			
+			
 			if (choose.equals("1")) {// 顾客
 				sql = new String(
 						"SELECT * FROM customer WHERE cusname=? AND cuspassword=?");
 			} else if (choose.equals("2")) {// 商家
 				sql = new String(
 						"SELECT * FROM merchant WHERE mername=? AND merpassword=?");
-			} else if (choose.equals("3")) {// 管理员
-				session.setAttribute("username", username);
-				session.setAttribute("password", password);
-			} else {
-				System.out.println("请选择身份登录！");
-				detail = new String("请选择身份登录！");
-			}
+			} 
 			// 对查询结果进行判断
 			rs = db.executeQuery(sql, params);
 			if (!rs.next()) {
@@ -117,6 +113,7 @@ public class DoLogin extends HttpServlet {
 					session.setAttribute("Logined", true);
 					js.put("id", rs.getInt(1));
 					js.put("username", rs.getString(2));
+					js.put("identity", choose);
 				}
 			}
 

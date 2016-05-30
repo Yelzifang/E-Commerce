@@ -67,7 +67,7 @@ public class ViewCart extends HttpServlet {
 			rs=db.executeQuery(sql, params);
 			if(!rs.next()){
 				System.out.println("购物车无商品！");
-				detail = new String("wo de fuck 购物车无商品！");
+				detail = new String("购物车无商品！");
 			}else{
 				status = true;
 				detail = new String("查看购物车成功！");

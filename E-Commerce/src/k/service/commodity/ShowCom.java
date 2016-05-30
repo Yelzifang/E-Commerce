@@ -41,7 +41,7 @@ public class ShowCom extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
 		HttpSession session = request.getSession();//存储账号密码
-		int merid = 1;//(int)session.getAttribute("id");
+		int merid = (int)session.getAttribute("id");
 		String params[] = new String[]{String.valueOf(merid)};
 		PrintWriter out = response.getWriter();
 		//对数据进行数据库查询

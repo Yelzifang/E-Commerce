@@ -14,7 +14,7 @@ function DelCart_CreateRequest(){
 
 function DelCart_CreateParams(b){
 	var comid=$(b).attr("id");
-	alert(comid);
+	//alert(comid);
 	return comid;
 }
 
@@ -32,16 +32,16 @@ function DelCart_SendRequest(b){
 function DelCart_parseRequest(){
 	
 	if(request.status==200&&request.readyState==4){
-		alert(request.responseText);
+		//alert(request.responseText);
 		
 		var deletecart=JSON.parse(request.responseText);
 		if(deletecart.status){
-			alert("judge:"+judge);
+			//alert("judge:"+judge);
 			if(judge=="carid"){
-				alert("car");
+				//alert("car");
 				ViewCart_SendRequest();
 			}else if(judge=="indid"){
-				alert("ind");
+				//alert("ind");
 				ViewIndent_SendRequest();
 			}
 			alert(del_msg.detail);

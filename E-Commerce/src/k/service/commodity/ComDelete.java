@@ -49,7 +49,7 @@ public class ComDelete extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		String merid = "22";
+		String merid = (String)session.getAttribute("id");
 		String comid = (String)request.getParameter("comid");
 		System.out.println(comid);
 		String[] params = new String[]{merid,comid};

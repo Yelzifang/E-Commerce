@@ -21,7 +21,7 @@ function Pay_SendRequest(){
 
 function Pay_parseRequest(){
 	if(request.status==200&&request.readyState==4){
-		alert(request.responseText);
+		//alert(request.responseText);
 		
 		var paycart=JSON.parse(request.responseText);
 		if(paycart.status){

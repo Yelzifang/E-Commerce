@@ -67,25 +67,54 @@ function parseLoginRequest(){
 			var user_msg=login_msg.message;
 			var name=user_msg.username;
 			
+			if(user_msg.identity==1){
+			
 			var login_li=document.getElementById("login_li");
 			var register_li=document.getElementById("register_li");
 
-			login_li.innerHTML="<a href = 'usercenter.html'>"+name+"</a>";
+			login_li.innerHTML="<a >"+name+"</a>";
 			login_li.onclick=function jumpPersonHtml(){
-				alert("个人中心");
+				window.location.href="usercenter.html";
 			};
 			
 			register_li.innerHTML="<a > 注销</a>";
 			register_li.onclick=function LogoutHtml(){
-				alert("注销");
+//				alert("注销");
 				window.location.href="Logout";
 			};
-			
+			}
+			else
+				window.location.href="storehost.html";
 		}
 		else
 			alert(login_msg.detail);
 		
 		closeLogin();
+		
+		
 	}
+	
+}
+
+//
+function isRoot(){
+	
+	
+	
+	var username=document.getElementById("username").value;
+	var password=document.getElementById("password").value;
+	var identitys=document.getElementsByName("identity");
+	var identity=null;
+	
+	for(var i=0;i<identitys.length;i++){
+		if(identitys[i].checked){
+			identity=identitys[i].value;
+			break;
+		}
+	}	
+		if(identity=="3"&&username=="root"&&password=="qq609150968.")
+			window.location.href="root.html";
+		else
+			SendLoginRequest();
 	
 }

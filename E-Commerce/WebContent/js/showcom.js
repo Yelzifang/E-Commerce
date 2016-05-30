@@ -17,7 +17,7 @@ function ComShow_CreateRequest(){
 }
 
 function ComShow_SendRequest(){
-	alert("com");
+	//alert("com");
 	request=ComShow_CreateRequest();
 	request.open("GET","http://localhost:8080/E-Commerce/ShowCom",true);
 	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -28,23 +28,23 @@ function ComShow_SendRequest(){
 function ComShow_parseRequest(){
 	
 	if(request.status==200&&request.readyState==4){
-		alert(request.responseText);
+		//alert(request.responseText);
 		
 		var comshow=JSON.parse(request.responseText);
 		$("#addgoods").empty();
 		if(comshow.status){
 			var com_msg=comshow.message;
-			alert(com_msg.length);	
+			//alert(com_msg.length);	
 			for(i=0;i<com_msg.length;i++){
-				alert("i="+i);
-				var html = "<div><a href='#'><label id='goods-name' >"+com_msg[i].comname+"</label></a>"+
-				"<div class='modification-button'><input type='button' id="+com_msg[i].comid+" value='删除' onclick='ComDel_SendRequest(this)'/></div></div>";
+				//alert("i="+i);
+				var html = "<p><label class ='comshow' id='goods-name' >"+com_msg[i].comname+"</label>&nbsp;&nbsp;"+
+				"<input type='button' id="+com_msg[i].comid+" value='删除' onclick='ComDel_SendRequest(this)'/></p>";
 
 				$("#addgoods").append(html);
 					
 			}		
 			
-			alert(comshow.detail);
+			//alert(comshow.detail);
 		}else{
 			alert(comshow.detail);
 		}
@@ -55,7 +55,7 @@ function ComShow_parseRequest(){
 //删除商品
 function ComDel_SendRequest(j){
 	var comid = $(j).attr("id");
-	alert("del comid:"+comid);
+	//alert("del comid:"+comid);
 	request=ComShow_CreateRequest();
 	request.open("POST","http://localhost:8080/E-Commerce/ComDelete",true);
 	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -66,7 +66,7 @@ function ComDel_SendRequest(j){
 function ComDel_parseRequest(){
 	
 	if(request.status==200&&request.readyState==4){
-		alert(request.responseText);
+		//alert(request.responseText);
 		var comdel=JSON.parse(request.responseText);
 		
 		if(comdel.status){		

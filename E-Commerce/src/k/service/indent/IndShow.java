@@ -44,7 +44,8 @@ public class IndShow extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		String cusid = "1"; //session.getAttribute("id");
+		int id = (int)session.getAttribute("id");
+		String cusid = new String(""+id);
 		String[] params = new String[]{cusid};
 		
 		DBO db = new DBO();
