@@ -1,0 +1,98 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" type="text/css" href="css/modification.css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商品展示</title>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script  type="text/javascript">
+$(document).ready(function(){
+//获得文本框对象
+   var t = $("#show-buy-amount");
+//初始化数量为1,并失效减
+$('#show-min').attr('disabled',true);
+    //数量增加操作
+    $("#show-add").click(function(){    
+        t.val(parseInt(t.val())+1)
+        if (parseInt(t.val())!=1){
+            $('#show-min').attr('disabled',false);
+        }
+      
+    }) 
+    //数量减少操作
+    $("#show-min").click(function(){
+        t.val(parseInt(t.val())-1);
+        if (parseInt(t.val())==1){
+            $('#shhow-min').attr('disabled',true);
+        }
+      
+    })
+   
+});
+</script>  
+
+<script type="text/javascript">
+function account(){
+	 var f = $("#show-buy-amount").value;
+	  alert("购买成功！");
+}
+</script>
+</head>
+<body>
+<div id="header">
+  <div id="header-top">
+    <ul>
+      <li>您好，欢迎光临本店！ </li>
+      <li id="login_li" class="loginhead" onclick="openLogin();"><a href="#">[ 登录 ]</a></li>
+      <li id="register_li" class="loginhead" onclick="openRegister();" ><a href="#">[ 免费注册 ]</a></li>
+      <li>|</li>
+
+      <li>|</li>
+      <li><a href="javascript:void(0)">帮助</a></li>
+      <li>|</li>
+      <li><a href="javascript:void(0)">联系我们</a></li>
+    </ul>
+  </div>
+  <div class="banner"> <img src="images/logo.png"/>
+  </div>
+</div>
+
+<!--商品展示容器-->
+<div id="modification-container">
+<!--	图片div-->
+	<div id="modification-mag">
+    <img src="images/dulunche.jpg" />
+    </div>
+    
+<!--    文字内容div-->
+	<div id="modification-text">
+    	<div id="modification-title">
+        <textarea id="goods-name"  style="font-size:20px; width:500px; height:50px;">快轮eva智能电动独轮车 单轮电动车自平衡车 体感车 火</textarea>
+        </div>
+      
+        
+        <div id="modification-describe">
+        <textarea id="goods-miaoshu" style="color:#AAA; width:500px; height:80px; ">快轮科技自美国CES2015展会载誉归来，推出该款无铆钉，流线弧形面板设计的无线互联独轮代步独轮车。主打轻便，科技，高配型号总车重量9.5公斤，充满电行程可达28公里左右，最大承重120公斤，可与手机通过蓝牙连接，实现系统持续固件更新，不断完善骑行体验。现在下单还送价值269元的超值大礼包。
+        </textarea>
+        </div>
+        <div id="modification-price">
+        原价： <input type="text" value="4500" id="old-price"><br />
+        优惠价： <input type="text" id="privilege-price" value="2999">
+        
+        </div>
+        <div id="modification-up">
+        <div id="modification-shopkeeper">
+       	<input type="button" id="con-modification" value="确认修改"/>
+        <a href="storehost.html"><input type="button" id="return-up" value="返回"/></a>
+        </div>
+        </div>
+ 
+    
+    
+</div>
+
+</body>
+</html>

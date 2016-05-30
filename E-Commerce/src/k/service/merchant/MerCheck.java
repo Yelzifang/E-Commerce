@@ -38,11 +38,19 @@ public class MerCheck extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		this.doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		String merid = "2";
-		String[] params = new String[]{merid};
+		String merid = (String)request.getParameter("merid");
+		String[] params = null;
 		
 		DBO db = new DBO();
 		int n = 0;
@@ -57,7 +65,14 @@ public class MerCheck extends HttpServlet {
 			if(conn==null){
 				System.out.println("连接成功！");
 			}else{
-				sql = new String("UPDATE merchant SET mercheck='true' WHERE merid=?");
+				if(merid.equals("all")){
+					params = new String[]{};
+					sql = new String("UPDATE merchant SET mercheck='true'");
+				}else{
+					params = new String[]{merid};
+					sql = new String("UPDATE merchant SET mercheck='true' WHERE merid=?");
+				}
+	
 				n = db.executeUpdate(sql, params);
 			}
 			if(n==0){
@@ -80,13 +95,6 @@ public class MerCheck extends HttpServlet {
 			e.printStackTrace();
 	
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 }

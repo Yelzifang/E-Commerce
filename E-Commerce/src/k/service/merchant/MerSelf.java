@@ -66,11 +66,11 @@ public class MerSelf extends HttpServlet {
 				System.out.println("查询成功！");
 				status = true;
 				detail = new String("查询成功！");
-				js.put("mername", rs.getInt(1));
-				js.put("merpassword", rs.getString(2));
-				js.put("mersex", rs.getString(3));
-				js.put("meryear", rs.getString(4));
-				js.put("mertele", rs.getString(5));
+				js.put("mername", rs.getString(2));
+				js.put("merpassword", rs.getString(3));
+				js.put("mersex", rs.getString(4));
+				js.put("meryear", rs.getInt(5));
+				js.put("mertele", rs.getString(6));
 			}
 			json.put("status", status);
 			json.put("detail", detail);

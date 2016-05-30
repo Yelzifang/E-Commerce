@@ -12,6 +12,8 @@
 <script src="js/viewcart.js"></script>
 <script src="js/deletecart.js"></script>
 <script src="js/pay.js"></script>
+<script src="js/viewindent.js"></script>
+
 
 
 
@@ -64,9 +66,9 @@
 -->        
         密码：<input type="text" id="cuserpassword2" /><br /><br />
         <!--<input type="text" id="cusersex2" />-->
-        性别：<input type="radio" id="cusersex2" value="1"> 男    
-		<input type="radio" id="cusersex2" value="2"> 女
-		<input type="radio" id="cusersex2" value="3"> 保密
+        <label><input type="radio" name="cusersex2" id="cusersex2" value="1" />男 </label>
+		<label><input type="radio" name="cusersex2" id="cusersex2" value="2" />女</label>
+		<label><input type="radio" name="cusersex2" id="cusersex2" value="3" checked="checked" />保密</label>
 <br /><br />
 <!--        <input type="text" name="cuseryear2" /><br />
 -->        
@@ -117,12 +119,12 @@
         <option>2014</option>
         <option>2015</option>
         <option>2016</option>
-		</select><br /> <br /><br />
+		</select><br /> <br />
         电话：<input type="text" id="cusertele2" /><br /><br />
         </div>
 	</div>
     <p>如需修改信息请在右侧对应栏填写新信息</p>
-    <input type="button" value="确定" onclick="ensure()" />
+    <input type="button" class="button" value="确定" onclick="ensure()" />
     <a href="#"></a>
 </div>
 <!--购物车-->
@@ -134,119 +136,31 @@
 
 </div>
 
-
-
 <!--我的订单-->
 <div class="userorder" style="display:none" id="iDBody3">
 	<!--单个订单-->
-	<div class="ordertop">
-    	<label for="ordertime">订单日期：&nbsp;</label>
-        <label id="intime">2016-5-20</label>
-    </div>
-    <!--一个订单内的所有商品-->
-    <div class="commess" id="commes">
-    	<div class="commess1">
-        <div class="commname">
-        <label id="comname">商品名字</label>
-        </div>
-        <div class="merrname">
-    	<label id="mername">商家名字</label>
-        </div>
-        <div class="comperp">
-        <label id="comprice">单价</label>
-        </div>
-        <div class="commnumber">
-        <label id="comnumber">数量</label>
-        </div>
-        <div class="compay">
-    	<label id="purchase">总价</label>
-   		</div>
-        <div class="combutton1">
-        <form>
-    	<input type="button" onclick="hid()" value="删除" />
-	    </form>
-        </div>
-        </div>
-    </div>
-    <div class="commess" id="commess2">
-    	<div class="commess1">
-        <div class="commname">
-        <label id="comname">商品名字</label>
-        </div>
-        <div class="merrname">
-    	<label id="mername">商家名字</label>
-        </div>
-        <div class="comperp">
-        <label id="comprice">单价</label>
-        </div>
-        <div class="commnumber">
-        <label id="comnumber">数量</label>
-        </div>
-        <div class="compay">
-    	<label id="purchase">总价</label>
-   		</div>
-        <div class="combutton1">
-        <form>
-    	<input type="button" onclick="hid()" value="删除" />
-	    </form>
-        </div>
-        </div>
-    </div><br />
-    <!--单个订单-->
-	<div class="ordertop">
-    	<label for="ordertime">订单日期：&nbsp;</label>
-        <label id="intime">2016-5-21</label>
-    </div>
-    <!--一个订单内的所有商品-->
-    <div class="commess" id="commess2">
-    	<div class="commess1">
-        <div class="commname">
-        <label id="comname">商品名字</label>
-        </div>
-        <div class="merrname">
-    	<label id="mername">商家名字</label>
-        </div>
-        <div class="comperp">
-        <label id="comprice">单价</label>
-        </div>
-        <div class="commnumber">
-        <label id="comnumber">数量</label>
-        </div>
-        <div class="compay">
-    	<label id="purchase">总价</label>
-   		</div>
-        <div class="combutton1">
-        <form>
-    	<input type="button" onclick="hid()" value="删除" />
-	    </form>
-        </div>
-        </div>
-    </div>
-    
-    <div class="commess" id="commess2">
-    	<div class="commess1">
-        <div class="commname">
-        <label id="comname">商品名字</label>
-        </div>
-        <div class="merrname">
-    	<label id="mername">商家名字</label>
-        </div>
-        <div class="comperp">
-        <label id="comprice">单价</label>
-        </div>
-        <div class="commnumber">
-        <label id="comnumber">数量</label>
-        </div>
-        <div class="compay">
-    	<label id="purchase">总价</label>
-   		</div>
-        <div class="combutton1">
-        <form>
-    	<input type="button" onclick="hid()" value="删除" />
-	    </form>
-        </div>
-        </div>
-    </div><br />
+	<div id = "addindent">
+	
+   </div>
+
+</div>
+
+<div class="foothold"><a target="_blank"><a>
+<div class="footer">
+	<ul>
+        <li>友情链接：</li>
+        
+        <li><a href="http://www.zqu.edu.cn/">肇庆学院官网</a></li>  
+        <li><a href="http://cs.zqu.edu.cn/">计算机学院软件学院</a></li>
+    	<li><a href="javascript:void(0)">关于我们</a></li>
+        <li>|</li>
+        <li><a href="javascript:void(0)">加入我们</a></li>
+        <li>|</li>
+        <li><a href="javascript:void(0)">团队情况</a></li>
+   </ul>
+ 
+   <p>Copyright &copy; 黄子芳 冯志宝 洪佳桂 黄志康</p>
+</div>
 </div>
 </div>
 </body>

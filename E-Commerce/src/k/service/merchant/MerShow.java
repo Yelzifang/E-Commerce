@@ -56,7 +56,7 @@ public class MerShow extends HttpServlet {
 			if(conn!=null)
 				System.out.println("conn sucess!");
 			
-			sql = new String("SELECT * FROM merchant"); 
+			sql = new String("SELECT * FROM merchant WHERE mercheck='false'"); 
 			
 			//对查询结果进行判断
 			rs = db.executeQuery(sql, params);
@@ -74,9 +74,11 @@ public class MerShow extends HttpServlet {
 //					out.println("password:"+rs.getString(3));
 //					out.println(rs.getBoolean(7));
 					JSONObject temp = new JSONObject();
-					temp.put("merid", rs.getInt(1));
-					temp.put("mername", rs.getString(2));
-					temp.put("mercheck", rs.getBoolean(7));
+					temp.put("id", rs.getInt(1));
+					temp.put("name",rs.getString(2));
+					temp.put("sex",rs.getString(4));
+					temp.put("year",rs.getInt(5));
+					temp.put("tele",rs.getString(6));
 					js.put(temp);
 				}
 			}

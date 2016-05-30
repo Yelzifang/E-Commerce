@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import k.dao.DBO;
 
 /**
@@ -35,35 +39,59 @@ public class ComShow extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String[] params = new String[]{};
+		response.setContentType("text/html;charset=utf-8");
 		HttpSession session = request.getSession();//存储账号密码
-		
+		int merid = 22;//(int)session.getAttribute("id");
+		String params[] = new String[]{String.valueOf(merid)};
 		PrintWriter out = response.getWriter();
 		//对数据进行数据库查询
 		DBO db = new DBO();
 		ResultSet rs = null;
 		String sql = null ;
+		
+		JSONObject json = new JSONObject();
+		JSONArray js = new JSONArray();//存储顾客数据
+		Boolean status = false;
+		String detail = null;
 		try {
 			Connection conn = db.getConn();
 			if(conn!=null)
 				System.out.println("conn sucess!");
 			
-			sql = new String("SELECT * FROM commodity"); 
+			sql = new String("SELECT * FROM commodity WHERE merid=?"); 
 			
 			//对查询结果进行判断
 			rs = db.executeQuery(sql, params);
-			while(rs.next()){
-				out.println("comid:"+rs.getInt(1));
-				out.println("comname:"+rs.getString(2));
-				out.println("comprice:"+rs.getFloat(3));
-				out.println("comimage:"+rs.getString(4));
-				out.println("comtotal:"+rs.getInt(5));
-				out.println("comsort:"+rs.getString(6));
-				out.println("comdescribe:"+rs.getString(7));
+			if(rs.next()){
+				status=true;
+				detail = new String("查询成功！");
+			}else{
+				detail = new String("查询失败！");
 			}
+			rs = db.executeQuery(sql, params);
+			while(rs.next()){
+//				out.println("comid:"+rs.getInt(1));
+//				out.println("comname:"+rs.getString(2));
+//				out.println("comprice:"+rs.getFloat(3));
+//				out.println("comimage:"+rs.getString(4));
+//				out.println("comtotal:"+rs.getInt(5));
+//				out.println("comsort:"+rs.getString(6));
+//				out.println("comdescribe:"+rs.getString(7));
+				JSONObject temp = new JSONObject();
+				temp.put("comid", rs.getInt(1));
+				temp.put("comname",rs.getString(2));
+				temp.put("comprice",rs.getFloat(3));
+				temp.put("comtotal",rs.getInt(5));
+				temp.put("comsort",rs.getString(6));
+				js.put(temp);
+			}
+			json.put("status", status);
+			json.put("detail", detail);
+			json.put("message", js);
+			out.println(json.toString());
 			db.closeAll();
 		} catch (ClassNotFoundException | InstantiationException
-				| IllegalAccessException | SQLException e) {
+				| IllegalAccessException | SQLException | JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -74,6 +102,7 @@ public class ComShow extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		this.doGet(request, response);
 	}
 
 }

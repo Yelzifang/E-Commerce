@@ -55,7 +55,7 @@ public class CusShow extends HttpServlet {
 			if(conn!=null)
 				System.out.println("conn sucess!");
 			
-			sql = new String("SELECT * FROM customer"); 
+			sql = new String("SELECT * FROM customer WHERE cuscheck='false'"); 
 			
 			//对查询结果进行判断
 			rs = db.executeQuery(sql, params);
@@ -70,11 +70,11 @@ public class CusShow extends HttpServlet {
 //				out.println("password:"+rs.getString(3));
 //				out.println(rs.getBoolean(7));
 				JSONObject temp = new JSONObject();
-				temp.put("cusid", rs.getInt(1));
-				temp.put("cusname",rs.getString(2));
-				temp.put("cussex",rs.getString(4));
-				temp.put("cusyear",rs.getString(5));
-				temp.put("custele",rs.getBoolean(7));
+				temp.put("id", rs.getInt(1));
+				temp.put("name",rs.getString(2));
+				temp.put("sex",rs.getString(4));
+				temp.put("year",rs.getInt(5));
+				temp.put("tele",rs.getString(6));
 				js.put(temp);
 			}
 			json.put("status", status);

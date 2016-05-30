@@ -75,6 +75,17 @@ function CusAlter_SendRequest(){
 
 function CreatCusParams(){
 	var password=document.getElementById("cuserpassword2").value;
+	var checksex = document.getElementsByName("cusersex2");
+	var sex;
+	for(var i=0;i<checksex.length;i++) 
+	    {  
+	        //判断那个单选按钮为选中状态 
+	        if(checksex[i].checked) 
+	        { 
+	            //弹出选中单选按钮的值 
+	            sex=checksex[i].value 
+	        }  
+	    }  
 	var sex=document.getElementById("cusersex2").value;
 	var year=document.getElementById("cuseryear2").value;
 	var tele=document.getElementById("cusertele2").value;
