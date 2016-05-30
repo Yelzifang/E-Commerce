@@ -115,7 +115,7 @@ public class ComDiv extends HttpServlet {
 
 				} else {
 					com_message.put("status", false);
-					com_message.put("detail", "已经没有更多的商品");
+					com_message.put("detail", "加载失败");
 				}
 
 				System.out.println(com_message.toString());

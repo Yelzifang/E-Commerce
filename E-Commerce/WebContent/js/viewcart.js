@@ -17,7 +17,6 @@ function ViewCart_CreateRequest(){
 }
 
 function ViewCart_SendRequest(){
-	alert("view");
 	request=ViewCart_CreateRequest();
 	request.open("GET","http://localhost:8080/E-Commerce/ViewCart",true);
 	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -28,14 +27,12 @@ function ViewCart_SendRequest(){
 function ViewCart_parseRequest(){
 	
 	if(request.status==200&&request.readyState==4){
-		alert(request.responseText);
 		
 		var viewcart=JSON.parse(request.responseText);
 		
 		$("#addcart").empty();
 		if(viewcart.status){
 			var cart_msg=viewcart.message;
-			alert(cart_msg.length);	
 			
 			var htmltitle = "<div class='carttitle'><div class='title1'>"+
 			"<label for='commess'>商品信息</label></div>"+
@@ -47,7 +44,7 @@ function ViewCart_parseRequest(){
 			var sum = 0;
 			
 			for(i=0;i<cart_msg.length;i++){
-				alert("i="+i);
+				
 				var html = "<div class='shoppingcart' id='shopping'>"+
 				"<div class='shoppingcart1'><input type='hidden' id='cartid"+i+"' value="+cart_msg[i].comid+" /><label id='cartname'>"+cart_msg[i].comname+
 				"</label></div>"+"<div class='shoppingcart2'><label id='cartprice"+i+"'>"+cart_msg[i].comprice+"</label></div>"+
@@ -66,16 +63,10 @@ function ViewCart_parseRequest(){
 			}
 			var htmlend = "<div class='showpay'><p id='purchase'>总额：元</p>"+
 			"<input type='button' class='button' value='立即购买' onclick='sure2()' /></div><br/><br/><br/>";
-			alert("end");
 			$("#addcart").append(htmlend);
 				
 			$("#purchase").html("总额:"+sum+"元");
 				
-			
-//			$("#cartname").html(cart_msg[0].comname);
-//			$("#cartprice").html(cart_msg[0].comprice);
-//			$("#cartcount").html(cart_msg[0].count);
-//			$("#cartpurchase").html(cart_msg[0].purchase);
 			alert(cusself.detail);
 		}else{
 			alert(cusself.detail);

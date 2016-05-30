@@ -49,7 +49,7 @@ public class MerAlter extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();//获取账号密码
 		//String cusname=request.getParameter("username");
-		String mername = "hzk";//(String) session.getAttribute("username");
+		String mername = (String) session.getAttribute("username");
 		System.out.println(mername);
 		String merpassword=request.getParameter("password");
 		System.out.println(merpassword);

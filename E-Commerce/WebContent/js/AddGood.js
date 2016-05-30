@@ -59,11 +59,13 @@ function SendAddRequest(){
 //解析上架请求
 function parseAddRequest(){
 	if(request.status==200&&request.readyState==4){
-		alert(request.responseText);
+//		alert(request.responseText);
 		
 		var upload_json=JSON.parse(request.responseText);
 		
+		if(upload_json.status){
 		alert(upload_json.detail);
-		
+		window.location.href="storehost.html"
+		}
 	}
 }

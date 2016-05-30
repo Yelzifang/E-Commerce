@@ -31,7 +31,6 @@ function Cus_SendRequest(){
 function Cus_parseRequest(){
 	
 	if(request.status==200&&request.readyState==4){
-		alert(request.responseText);
 		
 		var cusself=JSON.parse(request.responseText);
 		if(cusself.status){
@@ -85,17 +84,18 @@ function CreatCusParams(){
 	            //弹出选中单选按钮的值 
 	            sex=checksex[i].value 
 	        }  
-	    }  
-	var sex=document.getElementById("cusersex2").value;
+	    } 
+	//alert(sex);
+	//var sex=document.getElementById("cusersex2").value;
 	var year=document.getElementById("cuseryear2").value;
 	var tele=document.getElementById("cusertele2").value;
-	alert("password="+password+"&sex="+sex+"&year="+year+"&tele="+tele);
+	//alert("password="+password+"&sex="+sex+"&year="+year+"&tele="+tele);
 	return "password="+password+"&sex="+sex+"&year="+year+"&tele="+tele;
 }
 //解析请求
 function CusAlter_parseRequest(){
 	if(request.status==200&&request.readyState==4){
-		alert(request.responseText);
+		//alert(request.responseText);
 		var cusalterself=JSON.parse(request.responseText);
 		if(cusalterself.status){
 			alert(cusalterself.detail);

@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import k.dao.DBO;
 
@@ -39,8 +40,9 @@ public class MerSelf extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		String mername = "hzk";//request.getParameter("mername");
-		String merpassword= "123456";//request.getParameter("merpassword");
+		HttpSession session = request.getSession();
+		String mername = (String)session.getAttribute("username");
+		String merpassword= (String)session.getAttribute("password");
 		String[] params = new String[]{mername,merpassword};
 		
 		DBO db = new DBO();

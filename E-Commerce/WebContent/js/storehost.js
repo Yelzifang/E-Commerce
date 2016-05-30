@@ -21,7 +21,7 @@ function Mer_CreateRequest(){
 
 //发送请求
 function Mer_SendRequest(){
-	alert("mer")
+	//alert("mer")
 	request=Mer_CreateRequest();
 	request.open("GET","http://localhost:8080/E-Commerce/MerSelf",true);
 	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -32,7 +32,7 @@ function Mer_SendRequest(){
 function Mer_parseRequest(){
 	
 	if(request.status==200&&request.readyState==4){
-		alert(request.responseText);
+		//alert(request.responseText);
 		
 		var merself=JSON.parse(request.responseText);
 		if(merself.status){
@@ -50,7 +50,7 @@ function Mer_parseRequest(){
 			$("#meryear").html(mer_msg.meryear);
 			$("#mertele").html(mer_msg.mertele);
 			
-			alert(merself.detail);
+			//alert(merself.detail);
 		}else
 			alert(merself.detail);
 		}	
@@ -94,13 +94,13 @@ function CreatMerParams(){
 	//var sex=document.getElementById("mersex2").value;
 	var year=document.getElementById("meryear2").value;
 	var tele=document.getElementById("mertele2").value;
-	alert("password="+password+"&sex="+sex+"&year="+year+"&tele="+tele);
+	//alert("password="+password+"&sex="+sex+"&year="+year+"&tele="+tele);
 	return "password="+password+"&sex="+sex+"&year="+year+"&tele="+tele;
 }
 //解析请求
 function MerAlter_parseRequest(){
 	if(request.status==200&&request.readyState==4){
-		alert(request.responseText);
+		//alert(request.responseText);
 		var meralterself=JSON.parse(request.responseText);
 		if(meralterself.status){
 			alert(meralterself.detail);

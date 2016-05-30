@@ -49,11 +49,12 @@ public class DeleteCart extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-//		HttpSession session = request.getSession();
-//		String cusid = (String) session.getAttribute("id");
+		HttpSession session = request.getSession();
+		int id = (int)session.getAttribute("id");
+		String cusid = new String(""+id);
 		String comid = request.getParameter("comid");
 		System.out.println("comid:"+comid);
-		String cusid = "1";
+		//String cusid = "1";
 		//String comid = "1";
 		
 		String[] params = new String[]{cusid,comid}; 
