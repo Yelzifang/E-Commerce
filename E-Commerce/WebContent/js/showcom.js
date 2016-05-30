@@ -19,7 +19,7 @@ function ComShow_CreateRequest(){
 function ComShow_SendRequest(){
 	alert("com");
 	request=ComShow_CreateRequest();
-	request.open("GET","http://localhost:8080/E-Commerce/ComShow",true);
+	request.open("GET","http://localhost:8080/E-Commerce/ShowCom",true);
 	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	request.onreadystatechange=ComShow_parseRequest;
 	request.send();

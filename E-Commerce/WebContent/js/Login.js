@@ -20,7 +20,6 @@ function closeLogin(){
 function CreateLoginRequest(){
 	var req=null;
 	
-	
 	if(window.XMLHttpRequest)
 		req=new XMLHttpRequest();
 	else
@@ -54,22 +53,19 @@ function SendLoginRequest(){
 	request.open("POST","http://localhost:8080/E-Commerce/DoLogin",true);
 	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	request.onreadystatechange=parseLoginRequest;
-	alert("你确定登录吗？");
 	request.send(CreateLoginParamter());
 }
 //解析登录请求
 function parseLoginRequest(){
 	
 	if(request.status==200&&request.readyState==4){
-		alert(request.responseText);
+//		alert(request.responseText);
 		
 		var login_msg=JSON.parse(request.responseText);
 		
 		if(login_msg.status){
 			var user_msg=login_msg.message;
 			var name=user_msg.username;
-			
-			alert(name);
 			
 			var login_li=document.getElementById("login_li");
 			var register_li=document.getElementById("register_li");
