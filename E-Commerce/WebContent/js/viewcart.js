@@ -57,7 +57,7 @@ function ViewCart_parseRequest(){
 				"<input class='sy_num' id='cartcount' readonly type='text' name='number1' value="+cart_msg[i].count+" />"+ 
 				"<span class='sy_plus' id='sy_plus_gid1'>+</span></p></div>"+
 				"<div class='shoppingcart4'><label id='cartpurchase"+i+"'>"+cart_msg[i].purchase+"</label></div><br /><br />"+
-				"<div class='shoppingcart5'><input type='button' id="+cart_msg[i].comid+" onclick='DelCart_SendRequest(this)' value='删除' /></div></div><br />";
+				"<div class='shoppingcart5'><input type='button' class='button' name='carid' id="+cart_msg[i].comid+" onclick='DelCart_SendRequest(this)' value='删除' /></div></div><br />";
 		
 				sum=sum+cart_msg[i].purchase;
 				
@@ -65,7 +65,7 @@ function ViewCart_parseRequest(){
 					
 			}
 			var htmlend = "<div class='showpay'><p id='purchase'>总额：元</p>"+
-			"<input type='button' value='立即购买' onclick='sure2()' /></div><br/><br/><br/>";
+			"<input type='button' class='button' value='立即购买' onclick='sure2()' /></div><br/><br/><br/>";
 			alert("end");
 			$("#addcart").append(htmlend);
 				

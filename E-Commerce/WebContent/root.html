@@ -1,10 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link rel="stylesheet" type="text/css" href="../css/usercenter.css"/>
-<script type="text/javascript" src="../js/root.js"></script>
-<script type="text/javascript" src="../../../../大学生网上格子铺/js/cusmessager.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/root.css"/>
+<link rel="stylesheet" type="text/css" href="css/usercenter.css"/>
+<link rel="stylesheet" type="text/css" href="css/root.css"/>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/root.js"></script>
+<script type="text/javascript" src="js/cusmessager.js"></script>
+<script type="text/javascript" src="js/checkshow.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>大学生网上格子铺</title>
 </head>
@@ -47,8 +49,7 @@
     <div class="cusrootset5">
        	<label>电话号码</label>
     </div>
-    <div class="cusrootset5">
-       	<label>操作</label><br />
+    <div class="cusrootset7">
         <div class="cusrootset6">
         <label>审核</label>
         </div>
@@ -56,37 +57,14 @@
         <label>删除</label>
         </div>
     </div>
+    </div>
 
-	</div>
+
     <div class="cusroot" id="cusroot1">
-    <div class="cusrootset1">
-    <label for="cusname">Lucy</label>
-    </div>
-<!--    <div class="cusrootset2">
-    <label for="cuspassword">11111111</label>
-    </div>-->
-    <div class="cusrootset3">
-    <label for="cussex">女</label>
-    </div>
-    <div class="cusrootset4">
-    <label for="cusyear">1988</label>
-    </div>
-    <div class="cusrootset5">
-    <label for="cusname">11111111</label>
-    </div>
-    <div class="cusrootset5">
-    <input type="radio" id="pass" name="manage"  value="pass" checked="checked"><label for="pass"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="radio" id="dele" name="manage"  value="dele"><label for="dele"></label>
-    </div>
-        <div class="mana">
-        <div class="cusrootset6">
-    <input type="button" class="button" value="通过" onclick="rsure1()"/>
-    </div>
-    <div class="cusrootset6">
-    <input type="button" class="button" value="删除" onclick="rhid()"/>
-    </div>
 
     </div>
+    
+    
     </div>
     </div>
  <!--   商家管理-->
@@ -109,8 +87,7 @@
     <div class="cusrootset5">
        	<label>电话号码</label>
     </div>
-    <div class="cusrootset5">
-       	<label>操作</label><br />
+    <div class="cusrootset7">
         <div class="cusrootset6">
         <label>审核</label>
         </div>
@@ -118,49 +95,14 @@
         <label>删除</label>
         </div>
     </div>
+    
 
 	</div>
     <div class="cusroot" id="cusroot2">
-    <div class="cusrootset1">
-    <label for="cusname">Lucy</label>
+   
     </div>
-<!--    <div class="cusrootset2">
-    <label for="cuspassword">11111111</label>
-    </div>-->
-    <div class="cusrootset3">
-    <label for="cussex">女</label>
-    </div>
-    <div class="cusrootset4">
-    <label for="cusyear">1988</label>
-    </div>
-    <div class="cusrootset5">
-    <label for="cusname">11111111</label>
-    </div>
-    <div class="cusrootset5">
-    <input type="radio" id="pass" name="manage"  value="pass" checked="checked"><label for="pass"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="radio" id="dele" name="manage"  value="dele"><label for="dele"></label>
-    </div>
-        <div class="mana">
-        <div class="cusrootset6">
-    <input type="button" class="button" value="通过" onclick="rsure1()"/>
-    </div>
-    <div class="cusrootset6">
-    <input type="button" class="button" value="删除" onclick="rhid2()"/>
-    </div>
-
-    </div>
-<!--    <table width="650px">
-    <th><td width="150px">用户名</td></th>
-    <th><td width="150px">用户密码</td></th>
-    <th><td width="80px">性别</td></th>
-    <th><td width="120px">出生年份</td></th>
-    <th><td width="150px">电话号码</td></th>
-    <th><td width="150px">操作</td></th>
-    </table>
-    </div> -->
     
     
-    </div>
     </div>
 </div>
 <div class="foothold"><a  target="_blank"><a>
@@ -178,6 +120,7 @@
    </ul>
  
    <p>Copyright &copy; 黄子芳 冯志宝 洪佳桂 黄志康</p>
+</div>
 </div>
 </div>
 </body>

@@ -1,4 +1,4 @@
-package k.service.customer;
+package k.service.commodity;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import k.dao.DBO;
 
@@ -19,16 +20,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Servlet implementation class CusShow
+ * Servlet implementation class ShowCom
  */
-@WebServlet("/CusShow")
-public class CusShow extends HttpServlet {
+@WebServlet("/ShowCom")
+public class ShowCom extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CusShow() {
+    public ShowCom() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,7 +40,9 @@ public class CusShow extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
-		String[] params = new String[]{};
+		HttpSession session = request.getSession();//存储账号密码
+		int merid = 1;//(int)session.getAttribute("id");
+		String params[] = new String[]{String.valueOf(merid)};
 		PrintWriter out = response.getWriter();
 		//对数据进行数据库查询
 		DBO db = new DBO();
@@ -55,26 +58,31 @@ public class CusShow extends HttpServlet {
 			if(conn!=null)
 				System.out.println("conn sucess!");
 			
-			sql = new String("SELECT * FROM customer WHERE cuscheck='false'"); 
+			sql = new String("SELECT * FROM commodity WHERE merid=?"); 
 			
 			//对查询结果进行判断
 			rs = db.executeQuery(sql, params);
-			if(!rs.wasNull()){
-				status = true;
+			if(rs.next()){
+				status=true;
 				detail = new String("查询成功！");
+			}else{
+				detail = new String("查询失败！");
 			}
-			
+			rs = db.executeQuery(sql, params);
 			while(rs.next()){
-//				out.println("id:"+rs.getInt(1));
-//				out.println("username:"+rs.getString(2));
-//				out.println("password:"+rs.getString(3));
-//				out.println(rs.getBoolean(7));
+//				out.println("comid:"+rs.getInt(1));
+//				out.println("comname:"+rs.getString(2));
+//				out.println("comprice:"+rs.getFloat(3));
+//				out.println("comimage:"+rs.getString(4));
+//				out.println("comtotal:"+rs.getInt(5));
+//				out.println("comsort:"+rs.getString(6));
+//				out.println("comdescribe:"+rs.getString(7));
 				JSONObject temp = new JSONObject();
-				temp.put("id", rs.getInt(1));
-				temp.put("name",rs.getString(2));
-				temp.put("sex",rs.getString(4));
-				temp.put("year",rs.getInt(5));
-				temp.put("tele",rs.getString(6));
+				temp.put("comid", rs.getInt(1));
+				temp.put("comname",rs.getString(2));
+				temp.put("comprice",rs.getFloat(3));
+				temp.put("comtotal",rs.getInt(5));
+				temp.put("comsort",rs.getString(6));
 				js.put(temp);
 			}
 			json.put("status", status);
@@ -82,12 +90,8 @@ public class CusShow extends HttpServlet {
 			json.put("message", js);
 			out.println(json.toString());
 			db.closeAll();
-
 		} catch (ClassNotFoundException | InstantiationException
-				| IllegalAccessException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JSONException e) {
+				| IllegalAccessException | SQLException | JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

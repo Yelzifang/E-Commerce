@@ -1,0 +1,373 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" type="text/css" href="../css/usercenter.css"/>
+<script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+<!-- <script type="text/javascript" src="../js/shoppingcart.js"></script> -->
+<script type="text/javascript" src="../js/cusmessager.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>大学生网上格子铺 - 个人信息管理</title>
+<script>
+	$(document).ready(function(){
+		$('#nav').zlightMenu();
+	});
+</script>
+</head>
+
+<body>
+
+<div class="usercenter">
+<!--标题栏-->
+<div class="head">
+  <p><strong><h2>大学生网上格子铺用户个人中心</h2></strong></p>
+</div> 
+<!--导航栏-->
+<div class="nav">
+    <div class="nav-content"> 
+        <a href="javascript:run(0)">首页</a>
+        <a href="javascript:run(2)">我的购物车</a>
+        <a href="javascript:run(3)">我的订单</a> 
+        <a href="javascript:run(1)">个人信息管理</a> 
+    </div>
+</div>
+<!--个人信息管理-->
+<div class="usermessage" id="iDBody1">
+	<div class="usermessage1 ctrl-left">
+    	<h3>个人信息</h3>
+        <ul class="usermessage12">
+            <li><label for="cusername">您的昵称：</label>
+            <label id="cusname" >1111</label></li>
+            <li><label for="cuserpassword">您的密码：</label>
+            <label id="cuspassword">2222</label></li>
+            <li><label for="cusersex">您的性别：</label>
+            <label id="cussex">3333</label></li>
+            <li><label for="cuseryear">出生年份：</label>
+            <label id="cusyear">4444</label></li>
+            <li><label for="cusertele">电话号码：</label>
+            <label id="custele">5555</label></li>
+        </ul>
+    </div>
+    <div class="usermessage2 ctrl-left">
+    	<h3>信息修改</h3>
+        <ul class="usermessage22">
+    		<li><label for="cusername2">不可更改</label></li>
+            <li><input type="text" name="cuserpassword2" /></li>
+            <li>
+                <input type="radio" id="male" name="sex" value="male" checked="checked"><label for="male"> 男</label>&nbsp;&nbsp;&nbsp;
+                <input type="radio" id="female" name="sex" value="female"><label for="female"> 女</label>
+            </li>
+    		<li>
+            <select name="select" style='width:150px'>  
+                <option>1970</option>
+                <option>1971</option>
+                <option>1972</option>
+                <option>1973</option>
+                <option>1974</option>
+                <option>1975</option>
+                <option>1976</option>
+                <option>1977</option>
+                <option>1978</option>
+                <option>1979</option>
+        		<option>1980</option>  
+        		<option>1981</option>  
+        		<option>1982</option>  
+        		<option>1983</option>  
+        		<option>1984</option>  
+        		<option>1985</option>  
+        		<option>1986</option>  
+        		<option>1987</option>  
+        		<option>1988</option>  
+        		<option>1989</option>  
+        		<option>1990</option>  
+        		<option>1991</option>  
+        		<option>1992</option>  
+        		<option>1993</option>  
+        		<option>1994</option>  
+        		<option>1995</option>  
+        		<option>1996</option>  
+        		<option>1997</option>  
+        		<option>1998</option>  
+        		<option>1999</option>  
+        		<option>2001</option>  
+                <option>2002</option>
+                <option>2003</option>
+                <option>2004</option>
+                <option>2005</option>
+                <option>2006</option>
+                <option>2007</option>
+                <option>2008</option>
+                <option>2009</option>
+                <option>2010</option>
+                <option>2011</option>
+                <option>2012</option>
+                <option>2013</option>
+                <option>2014</option>
+                <option>2015</option>
+                <option>2016</option>
+    		</select>
+            </li>
+            <li><input type="text" name="custele2" /></li>
+        </ul>
+	</div>
+    <p>如需修改信息请在右侧对应栏填写新信息</p>
+    <button type="button" class="button" value="确定" onclick="sure1()">确定</button>
+    <a href="#"></a>
+</div>
+<!--购物车-->
+<div class="cart" style="display:none" id="iDBody2">
+    <div class="carttitle">
+        <div class="cart-info">
+            <label for="commess">商品信息</label>
+        </div>
+
+        <div class="cart-price">
+            <label id="comperp">单价(元)</label>
+        </div>
+        <div class="cart-amount">
+            <label id="comnumber">数量</label>
+        </div>
+        <div class="cart-sum">
+            <label id="comtotal">金额(元)</label>
+        </div>
+        <div class="cart-op">
+            <label id="comtotal">操作</label>
+        </div>
+    </div>
+
+    <div class="shoppingcart ctrl-left" id="shopping">
+        <!-- 含js-goods的整个div表示一个商品，不能删掉这个类！ -->
+        <div class="goods ctrl-left" id="good">
+            <div class="cart-info">透明手机壳</div>
+            <div class="cart-price price" id="comprice">9</div>
+            <div class="cart-amount" id="123213">
+                <p class="p_num">
+                    <span class="sy_minus" id="sy_minus_gid1">-</span> 
+                    <input class="sy_num" id="sy_num_gid1" readonly type="text" name="number1" value="1" autocomplete="off"/> 
+                    <span class="sy_plus" id="sy_plus_gid1">+</span>
+                </p>
+            </div>
+            <div class="cart-sum price" id="purchase">9</div>
+            <div class="cart-op">
+                <form>
+                    <input class="button" type="button" onclick="hide()" value="删除" />
+                </form>
+            </div>
+        </div>
+        <!-- 含js-goods的整个div表示一个商品，不能删掉这个类！ -->
+        <div class="goods ctrl-left" id="good">
+            <div class="cart-info">aaa</div>
+            <div class="cart-price price" id="comprice">4</div>
+            <div class="cart-amount" id="123213">
+                <p class="p_num">
+                    <span class="sy_minus" id="sy_minus_gid1">-</span> 
+                    <input class="sy_num" id="sy_num_gid1" readonly type="text" name="number1" value="1" autocomplete="off"/> 
+                    <span class="sy_plus" id="sy_plus_gid1">+</span>
+                </p>
+            </div>
+            <div class="cart-sum price" id="purchase">4</div>
+            <div class="cart-op">
+                <form>
+                    <input class="button" type="button" onclick="hide()" value="删除" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="no-goods">购物车里没有东西哦，快去选购吧~</div>
+    <div class="showpay">
+        <p>总额：<span id="total-price" class="price"></span>元</p>
+        <button type="submit" class="button" value="立即购买" onclick="sure2()">立即购买</button>
+    </div>
+</div>
+<!--我的订单-->
+<div class="price" style="display:none" id="iDBody3">
+    <!--单个订单-->
+    <div class="ordertop">
+        <label for="ordertime">订单日期：&nbsp;</label>
+        <label id="intime">2016-5-20</label>
+    </div>
+    <!--一个订单内的所有商品-->
+    <div class="commess" id="commes">
+        <div class="commess1">
+        <div class="commname">
+        <label id="comname">商品名字</label>
+        </div>
+        <div class="merrname">
+        <label id="mername">商家名字</label>
+        </div>
+        <div class="comperp">
+        <label id="comprice">单价</label>
+        </div>
+        <div class="commnumber">
+        <label id="comnumber">数量</label>
+        </div>
+        <div class="compay">
+        <label id="purchase">总价</label>
+        </div>
+        <div class="combutton1">
+        <form>
+        <input type="button" class="button" onclick="hid()" value="删除" />
+        </form>
+        </div>
+        </div>
+    </div>
+    <!--单个订单-->
+    <div class="ordertop">
+        <label for="ordertime">订单日期：&nbsp;</label>
+        <label id="intime">2016-5-20</label>
+    </div>
+    <!--一个订单内的所有商品-->
+    <div class="commess" id="commes">
+        <div class="commess1">
+        <div class="commname">
+        <label id="comname">商品名字</label>
+        </div>
+        <div class="merrname">
+        <label id="mername">商家名字</label>
+        </div>
+        <div class="comperp">
+        <label id="comprice">单价</label>
+        </div>
+        <div class="commnumber">
+        <label id="comnumber">数量</label>
+        </div>
+        <div class="compay">
+        <label id="purchase">总价</label>
+        </div>
+        <div class="combutton1">
+        <form>
+        <input type="button" class="button" onclick="hid()" value="删除" />
+        </form>
+        </div>
+        </div>
+    </div><!--单个订单-->
+    <div class="ordertop">
+        <label for="ordertime">订单日期：&nbsp;</label>
+        <label id="intime">2016-5-20</label>
+    </div>
+    <!--一个订单内的所有商品-->
+    <div class="commess" id="commes">
+        <div class="commess1">
+        <div class="commname">
+        <label id="comname">商品名字</label>
+        </div>
+        <div class="merrname">
+        <label id="mername">商家名字</label>
+        </div>
+        <div class="comperp">
+        <label id="comprice">单价</label>
+        </div>
+        <div class="commnumber">
+        <label id="comnumber">数量</label>
+        </div>
+        <div class="compay">
+        <label id="purchase">总价</label>
+        </div>
+        <div class="combutton1">
+        <form>
+        <input type="button" class="button" onclick="hid()" value="删除" />
+        </form>
+        </div>
+        </div>
+    </div>
+    <div class="commess" id="commess2">
+        <div class="commess1">
+        <div class="commname">
+        <label id="comname">商品名字</label>
+        </div>
+        <div class="merrname">
+        <label id="mername">商家名字</label>
+        </div>
+        <div class="comperp">
+        <label id="comprice">单价</label>
+        </div>
+        <div class="commnumber">
+        <label id="comnumber">数量</label>
+        </div>
+        <div class="compay">
+        <label id="purchase">总价</label>
+        </div>
+        <div class="combutton1">
+        <form>
+        <input type="button" class="button" onclick="hid()" value="删除" />
+        </form>
+        </div>
+        </div>
+    </div>
+    <br />
+    <!--单个订单-->
+    <div class="ordertop">
+        <label for="ordertime">订单日期：&nbsp;</label>
+        <label id="intime">2016-5-21</label>
+    </div>
+    <!--一个订单内的所有商品-->
+    <div class="commess" id="commess2">
+        <div class="commess1">
+        <div class="commname">
+        <label id="comname">商品名字</label>
+        </div>
+        <div class="merrname">
+        <label id="mername">商家名字</label>
+        </div>
+        <div class="comperp">
+        <label id="comprice">单价</label>
+        </div>
+        <div class="commnumber">
+        <label id="comnumber">数量</label>
+        </div>
+        <div class="compay">
+        <label id="purchase">总价</label>
+        </div>
+        <div class="combutton1">
+        <form>
+        <input type="button" class="button" onclick="hid()" value="删除" />
+        </form>
+        </div>
+        </div>
+    </div>
+    
+    <div class="commess" id="commess2">
+        <div class="commess1">
+        <div class="commname">
+        <label id="comname">商品名字</label>
+        </div>
+        <div class="merrname">
+        <label id="mername">商家名字</label>
+        </div>
+        <div class="comperp">
+        <label id="comprice">单价</label>
+        </div>
+        <div class="commnumber">
+        <label id="comnumber">数量</label>
+        </div>
+        <div class="compay">
+        <label id="purchase">总价</label>
+        </div>
+        <div class="combutton1">
+        <form>
+        <input type="button" class="button" onclick="hid()" value="删除" />
+        </form>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="foothold"><a  target="_blank"><a>
+<div class="footer">
+	<ul>
+        <li>友情链接：</li>
+        
+        <li><a href="http://www.zqu.edu.cn/">肇庆学院官网</a></li>  
+        <li><a href="http://cs.zqu.edu.cn/">计算机学院软件学院</a></li>
+    	<li><a href="javascript:void(0)">关于我们</a></li>
+        <li>|</li>
+        <li><a href="javascript:void(0)">加入我们</a></li>
+        <li>|</li>
+        <li><a href="javascript:void(0)">团队情况</a></li>
+   </ul>
+ 
+   <p>Copyright &copy; 黄子芳 冯志宝 洪佳桂 黄志康</p>
+</div>
+</div>
+</body>
+</html>

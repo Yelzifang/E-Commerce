@@ -38,11 +38,20 @@ public class MerDelete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		this.doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();//获取账号密码
-		String mername="huazhka";//request.getParameter("mername");
-		String[] params = new String[]{mername};
+		String merid=(String)request.getParameter("merid");
+		System.out.println("merid:"+merid);
+		String[] params = null;
 		
 		DBO db = new DBO();
 		String sql = null ;
@@ -56,9 +65,13 @@ public class MerDelete extends HttpServlet {
 			Connection conn = (Connection) db.getConn();
 			if(conn!=null)
 				System.out.println("conn sucess!");
-			
-			sql = new String("DELETE FROM merchant WHERE mername=?");
-			
+			if(merid.equals("delall")){
+				sql = new String("DELETE FROM merchant WHERE mercheck='false'");
+				params = new String[]{};
+			}else{
+				sql = new String("DELETE FROM merchant WHERE merid=?");
+				params = new String[]{merid};
+			}
 			n = db.executeUpdate(sql, params);
 			if(n==0){
 				System.out.println("删除失败！");
@@ -78,13 +91,6 @@ public class MerDelete extends HttpServlet {
 			 			// TODO Auto-generated catch block
 			 			e.printStackTrace();	
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 }

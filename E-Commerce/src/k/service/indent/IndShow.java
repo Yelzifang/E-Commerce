@@ -19,6 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.mysql.jdbc.CallableStatement;
+
 /**
  * Servlet implementation class IndShow
  */
@@ -46,6 +48,7 @@ public class IndShow extends HttpServlet {
 		String[] params = new String[]{cusid};
 		
 		DBO db = new DBO();
+		CallableStatement cs = null;
 		ResultSet rs = null;
 		String sql = null;
 		
@@ -59,10 +62,10 @@ public class IndShow extends HttpServlet {
 			if(conn!=null){
 				System.out.println("连接成功!");
 			}
-			sql = new String("SELECT i.intime,c.comname,m.mername,c.comprice,i.count,i.purchase "+
-					"FROM indent i, commodity c, merchant m"+
-					"WHERE c.merid=m.merid AND i.comid=c.comid AND i.isPay ='true' AND i.cusid=?");
-			rs=db.executeQuery(sql, params);
+			sql = new String("{call pro_cus_indent(?)}");
+			cs = (CallableStatement) conn.prepareCall(sql);
+			cs.setString(1, cusid);
+			rs=cs.executeQuery();
 			if(!rs.next()){
 				System.out.println("无订单！");
 				detail = new String("无订单！");
@@ -79,12 +82,13 @@ public class IndShow extends HttpServlet {
 //					out.println("总额："+rs.getFloat(4));
 					
 					JSONObject temp = new JSONObject();
-					temp.put("time", rs.getDate(1).toString());
+					temp.put("intime", rs.getDate(1).toString());
 					temp.put("comname", rs.getString(2));
 					temp.put("mername", rs.getString(3));
 					temp.put("comprice", rs.getFloat(4));
 					temp.put("count", rs.getInt(5));
 					temp.put("purchase", rs.getFloat(6));
+					temp.put("comid", rs.getInt(7));
 					js.put(temp);
 				}
 			}

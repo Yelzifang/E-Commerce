@@ -96,7 +96,13 @@ body{
 }
 .cusrootset6{
 	width:75px;
-	height:50px;
+	height:25px;
+	float:left;
+	text-align:center;
+}
+.cusrootset7{
+	width:150px;
+	height:25px;
 	float:left;
 	text-align:center;
 }

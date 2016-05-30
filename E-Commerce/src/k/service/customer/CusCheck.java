@@ -19,16 +19,16 @@ import org.json.JSONObject;
 import com.mysql.jdbc.Connection;
 
 /**
- * Servlet implementation class CusDelete
+ * Servlet implementation class CusCheck
  */
-@WebServlet("/CusDelete")
-public class CusDelete extends HttpServlet {
+@WebServlet("/CusCheck")
+public class CusCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CusDelete() {
+    public CusCheck() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,7 +37,6 @@ public class CusDelete extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		this.doPost(request, response);
 	}
 
@@ -45,50 +44,55 @@ public class CusDelete extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		HttpSession session = request.getSession();//获取账号密码
-		String cusid=(String)request.getParameter("cusid");
-		System.out.println("delcusid:"+cusid);
+		HttpSession session = request.getSession();
+		String cusid = (String)request.getParameter("cusid");
+		
+		System.out.println(cusid);
 		String[] params = null;
 		
 		DBO db = new DBO();
-		String sql = null ;
-		int n=0;//判断是否修改成功;
+		int n = 0;
+		String sql = null;
+		
 		JSONObject json = new JSONObject();
-		JSONObject js = new JSONObject();
+		JSONObject js= new JSONObject();
 		Boolean status = false;
 		String detail = null;
-		try {
+		try{
 			Connection conn = (Connection) db.getConn();
-			if(conn!=null)
-				System.out.println("conn sucess!");
-			if(cusid.equals("delall")){
-				sql = new String("DELETE FROM customer WHERE cuscheck='false'");
-				params = new String[]{}; 
+			if(conn==null){
+				System.out.println("连接成功！");
 			}else{
-				sql = new String("DELETE FROM customer WHERE cusid=?");
-				params = new String[]{cusid}; 
+				if(cusid.equals("all")){
+					params = new String[]{};
+					sql = new String("UPDATE customer SET cuscheck='true'");
+				}else{
+					params = new String[]{cusid};
+					sql = new String("UPDATE customer SET cuscheck='true' WHERE cusid=?");
+				}
+				n = db.executeUpdate(sql, params);
 			}
-			n = db.executeUpdate(sql, params);
 			if(n==0){
-				detail = new String("删除失败！");
-				System.out.println("删除失败！");
+				System.out.println("审核失败！");
+				detail = new String("审核失败！");
 			}else{
-				System.out.println("删除成功！");
-				detail = new String("删除成功！");
+				System.out.println("审核成功！");
 				status = true;
+				detail = new String("审核成功！");
 			}
+			
 			json.put("status", status);
 			json.put("detail", detail);
 			json.put("message", js);
 			out.println(json.toString());
 			db.closeAll();
-			
-		}catch (ClassNotFoundException | InstantiationException|IllegalAccessException | SQLException | JSONException e) {
-			 			// TODO Auto-generated catch block
-			 			e.printStackTrace();	
+		}catch(ClassNotFoundException | InstantiationException
+				| IllegalAccessException | SQLException | JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	
 		}
 	}
 

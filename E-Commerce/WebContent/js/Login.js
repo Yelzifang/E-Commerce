@@ -70,7 +70,7 @@ function parseLoginRequest(){
 			var login_li=document.getElementById("login_li");
 			var register_li=document.getElementById("register_li");
 
-			login_li.innerHTML="<a >"+name+"</a>";
+			login_li.innerHTML="<a href = 'usercenter.html'>"+name+"</a>";
 			login_li.onclick=function jumpPersonHtml(){
 				alert("个人中心");
 			};

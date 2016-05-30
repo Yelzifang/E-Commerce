@@ -44,6 +44,7 @@ function run(i){
       document.getElementById('iDBody1').style.display = "none";
       document.getElementById('iDBody2').style.display = "none";
       document.getElementById('iDBody3').style.display = "block";
+      ViewIndent_SendRequest();
 	  break;
     }
   }

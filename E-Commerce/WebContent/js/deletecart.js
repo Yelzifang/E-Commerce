@@ -1,7 +1,7 @@
 /**
  * 
  */
-
+var judge = null;
 function DelCart_CreateRequest(){
 	
 	var req=null;
@@ -9,7 +9,6 @@ function DelCart_CreateRequest(){
 		req=new XMLHttpRequest();
 	else
 		req=new ActiveXObject("Microsoft.XMLHTTP");
-	
 	return req;
 }
 
@@ -21,6 +20,8 @@ function DelCart_CreateParams(b){
 
 function DelCart_SendRequest(b){
 	var comid = b;
+	judge=$(b).attr("name");
+	
 	request=DelCart_CreateRequest();
 	request.open("POST","http://localhost:8080/E-Commerce/DeleteCart",true);
 	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -35,7 +36,14 @@ function DelCart_parseRequest(){
 		
 		var deletecart=JSON.parse(request.responseText);
 		if(deletecart.status){
-			ViewCart_SendRequest();
+			alert("judge:"+judge);
+			if(judge=="carid"){
+				alert("car");
+				ViewCart_SendRequest();
+			}else if(judge=="indid"){
+				alert("ind");
+				ViewIndent_SendRequest();
+			}
 			alert(del_msg.detail);
 		}else{
 			alert(del_msg.detail);
