@@ -20,7 +20,7 @@ function CreateBuyParamter(){
 	var price_label=document.getElementById("privilege-price").innerText;
 	var amount=document.getElementById("show-buy-amount").value;
 	
-	alert(window.location.search.replace("?","")+"&comprice="+price_label+"&count="+amount);
+//	alert(window.location.search.replace("?","")+"&comprice="+price_label+"&count="+amount);
 	
 	return window.location.search.replace("?","")+"&comprice="+price_label+"&count="+amount;
 }

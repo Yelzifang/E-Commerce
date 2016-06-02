@@ -77,7 +77,7 @@ function parseComRequest(){
 			var describe_label=document.getElementById("describe");
 			var comtotal_label=document.getElementById("show-stock");
 			
-			img_div.innerHTML="<img src=ftp://root:qq609150968.@115.28.228.39/root/img/"+img_src+" />";
+			img_div.innerHTML="<img src=ftp://root:qq609150968.@115.28.228.39/img/"+img_src+" />";
 			name_label.innerHTML=name_value;
 			price_label.innerHTML=price_value;
 			merid_label.innerHTML=merid_value;
@@ -140,7 +140,7 @@ function parseInitRequest(){
 
 			login_li.innerHTML="<a >"+name+"</a>";
 			login_li.onclick=function jumpPersonHtml(){
-				alert("个人中心");
+				window.location.href="usercenter.html";
 			};
 			
 			register_li.innerHTML="<a > 注销</a>";

@@ -7,7 +7,7 @@ function runto(i){
     case 1:{
       document.getElementById('idroot1').style.display = "block";
       document.getElementById('idroot2').style.display = "none";
-      alert("点击cus");
+     // alert("点击cus");
       var j = "cus"; 
       CheckShow_SendRequest(j);
 	  break;
@@ -15,7 +15,7 @@ function runto(i){
     case 2:{
       document.getElementById('idroot1').style.display = "none";
       document.getElementById('idroot2').style.display = "block";
-      alert("点击mer");
+      //alert("点击mer");
       var j = "mer"; 
       CheckShow_SendRequest(j);
 	  break;

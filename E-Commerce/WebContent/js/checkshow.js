@@ -15,15 +15,15 @@ function CheckShow_CreateRequest(){
 }
 
 function CheckShow_SendRequest(j){
-	alert("checkshow");
+	//alert("checkshow");
 	jdg = ""+j;
-	alert("sendjdg:"+jdg);
+	//alert("sendjdg:"+jdg);
 	request=CheckShow_CreateRequest();
 	if(jdg=="cus"){
 		request.open("GET","http://localhost:8080/E-Commerce/CusShow",true);
 	}else{
 		request.open("GET","http://localhost:8080/E-Commerce/MerShow",true);
-		alert("open");
+		//alert("open");
 	}
 	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	request.onreadystatechange=CheckShow_parseRequest;
@@ -33,14 +33,14 @@ function CheckShow_SendRequest(j){
 function CheckShow_parseRequest(){
 	
 	if(request.status==200&&request.readyState==4){
-		alert(request.responseText);
+		//alert(request.responseText);
 		
 		var checkshow=JSON.parse(request.responseText);
 		
 		if(checkshow.status){
 			var check_msg=checkshow.message;
-			alert(check_msg.length);
-			alert("jdg:"+jdg);
+			//alert(check_msg.length);
+			//alert("jdg:"+jdg);
 			if(jdg=="cus"){
 				$("#cusroot1").empty();
 			}else{
@@ -48,7 +48,7 @@ function CheckShow_parseRequest(){
 			}
 			
 			for(i=0;i<check_msg.length;i++){
-				alert("i="+i);
+				//alert("i="+i);
 				
 				var html ="<div class='cusrootset1'><label id='cusname'>"+check_msg[i].name+"</label></div>"+
 					"<div class='cusrootset3'><label id='cussex'>"+check_msg[i].sex+"</label></div>"+
@@ -57,7 +57,7 @@ function CheckShow_parseRequest(){
 					"<div class='cusrootset5'><label id='pass'></label><input type='button' id='"+check_msg[i].id+"' onclick='Check_SendRequest(this)' "+
 					"value='通过' />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
 					"<label for='dele'></label><input type='button' id='"+check_msg[i].id+"' onclick='Delete_SendRequest(this)'  value='删除' /></div>";
-				alert("html");	
+				//alert("html");	
 				if(jdg=="cus"){
 					$("#cusroot1").append(html);
 				}else{
@@ -77,11 +77,11 @@ function CheckShow_parseRequest(){
 			alert(checkshow.detail);
 		}else{
 			alert(checkshow.detail);
-			if(jdg=="cus"){
-				runto(1);
-			}else{
-				runto(2);
-			}
+//			if(jdg=="cus"){
+//				runto(1);
+//			}else{
+//				runto(2);
+//			}
 		}
 	}		
 }
@@ -107,7 +107,7 @@ function Check_SendRequest(t){
 function Check_parseRequest(){
 	
 	if(request.status==200&&request.readyState==4){
-		alert(request.responseText);
+		//alert(request.responseText);
 		
 		var check=JSON.parse(request.responseText);
 		
@@ -143,7 +143,7 @@ function Delete_SendRequest(t){
 function Delete_parseRequest(){
 	
 	if(request.status==200&&request.readyState==4){
-		alert(request.responseText);
+		//alert(request.responseText);
 		
 		var del=JSON.parse(request.responseText);
 		

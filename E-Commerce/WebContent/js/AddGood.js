@@ -34,12 +34,18 @@ function CreateAddParamter(){
 	
 	var comname=document.getElementById("comname").value;
 	var comprice=document.getElementById("comprice").value;
+	html = editor1.html();
+	editor1.sync();
 	var comimage=document.getElementById("file").value;
+	
+	
+//	comimage=comimage.substring(comimage.indexOf("\""),comimage.indexOf("\"",2));
+	alert(comimage);
 	var comtotal=document.getElementById("comtotal").value;
 	var comsort=document.getElementById("comsort").value;
 	var comdescribe=document.getElementById("comdescribe").value;
 	
-	alert("comname="+comname+"&comprice="+comprice+"&comimage="+comimage+"&comtotal="+comtotal+"&comsort="+comsort+"&comdescribe="+comdescribe);
+//	alert("comname="+comname+"&comprice="+comprice+"&comimage="+comimage+"&comtotal="+comtotal+"&comsort="+comsort+"&comdescribe="+comdescribe);
 	
 	return "comname="+comname+"&comprice="+comprice+"&comimage="+comimage+"&comtotal="+comtotal+"&comsort="+comsort+"&comdescribe="+comdescribe;
 	
@@ -59,13 +65,11 @@ function SendAddRequest(){
 //解析上架请求
 function parseAddRequest(){
 	if(request.status==200&&request.readyState==4){
-//		alert(request.responseText);
+		alert(request.responseText);
 		
 		var upload_json=JSON.parse(request.responseText);
 		
-		if(upload_json.status){
 		alert(upload_json.detail);
-		window.location.href="storehost.html"
-		}
+		
 	}
 }
