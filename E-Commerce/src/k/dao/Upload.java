@@ -37,7 +37,7 @@ public class Upload {
 
 		NewPath = df.format(date).toString().replaceAll("-", "")
 				+ df1.format(date).toString().replace(":", "")
-				+ Path.substring(Path.indexOf("."), Path.length());
+				+ Path.substring(Path.lastIndexOf("."), Path.length());
 
 		try {
 			ftpClient.connect(hostname, port);

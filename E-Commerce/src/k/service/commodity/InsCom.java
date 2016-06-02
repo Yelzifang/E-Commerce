@@ -49,19 +49,24 @@ public class InsCom extends HttpServlet {
 		String comtotal = request.getParameter("comtotal");
 		String comsort = request.getParameter("comsort");
 		String comdescribe = request.getParameter("comdescribe");
-		// String merid = (String) request.getSession().getAttribute("id");
-		String merid = "1";
+		String merid = (String) request.getSession().getAttribute("id");
+//		String merid = "1";
 
 		DBO db = new DBO();
 		String sql = null;
 
+		System.out.println(comimage);
+		
+		comimage = request.getServletContext().getRealPath("/")
+				+ comimage.split("\"")[1].substring(12);
+		
 		JSONObject upload_json = new JSONObject();
 		PrintWriter out = response.getWriter();
 
 		if (comimage != null)
 			comimage = Upload.UploadImg(comimage);
 
-		System.out.println(comimage);
+		
 
 		String[] params = new String[] { comname, comprice, comimage, comtotal,
 				comsort, comdescribe, merid };

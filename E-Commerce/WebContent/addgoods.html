@@ -5,6 +5,33 @@
 <title>大学生网上格子铺</title>
 <link rel="stylesheet" type="text/css" href="css/addgoods.css"/>
 <script src="js/AddGood.js"></script>
+	<link rel="stylesheet" href="kindeditor/themes/default/default.css" />
+	<link rel="stylesheet" href="kindeditor/plugins/code/prettify.css" />
+	<script charset="utf-8" src="kindeditor/kindeditor-all-min.js"></script>
+	<script charset="utf-8" src="kindeditor/lang/zh-CN.js"></script>
+	<script charset="utf-8" src="kindeditor/plugins/code/prettify.js"></script>
+	<script>
+		KindEditor.ready(function(K) {
+			 editor1 = K.create('textarea[name="comimage"]', {
+				cssPath : 'kindeditor/plugins/code/prettify.css',
+				uploadJson : 'kindeditor/upload_json.jsp',
+				fileManagerJson : 'kindeditor/file_manager_json.jsp',
+				allowFileManager : true,
+				afterCreate : function() {
+					var self = this;
+					K.ctrl(document, 13, function() {
+						self.sync();
+						document.forms['example'].submit();
+					});
+					K.ctrl(self.edit.doc, 13, function() {
+						self.sync();
+						document.forms['example'].submit();
+					});
+				}
+			});
+			prettyPrint();
+		});
+	</script>
 </head>
 <body>
 <div class="addgoods">
@@ -15,6 +42,8 @@
 <div class="addtable">
 <br />
 <div class="shopping">
+
+
 <label for="comname">商品名称:&nbsp;</label>
 <input id="comname" type="text" name="comname" /><br /><br />
 <label for="comprice">商品单价:&nbsp;</label>
@@ -26,15 +55,19 @@
 <label for="comname">商品描述:&nbsp;</label>
 <textarea id="comdescribe" name="comdescribe" cols ="35" rows = "4"></textarea><br /><br />
 <label for="comimage">插入图片:&nbsp;</label>
-<input id="file" type="file" name="comimage" onchange="previewImg()" /><br />
+<!-- <input id="file" type="file" name="comimage" onchange="previewImg()" enctype="multipart/form-data"/> -->
+<textarea id="file" name="comimage" cols="100" rows="8" style="width:700px;height:200px;visibility:hidden;"></textarea>
+<br />
+
 </div>
 <div class="imag">
-<img id="img1" src="" alt="  " name="comimage" width="150" height="150" style="background-color: #A0A0A4" />&nbsp;&nbsp;
+<!-- <img id="img1" src="" alt="  " name="comimage" width="150" height="150" style="background-color: #A0A0A4" />&nbsp;&nbsp; -->
 <br /><br />
 </div>
 
 <div class="foot"><br />
-<input type="button" value="确定" onclick="SendAddRequest()"/>
+<input type="button" value="确定" onclick="SendAddRequest()"/><!--  -->
+<a href="storehost.html" ><input type="button" value="返回"></a>
 </div> 
 </div>  
 </div>

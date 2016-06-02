@@ -16,5 +16,8 @@
 	<classpathentry kind="lib" path="G:/java/workspace/E-Commerce/WebContent/lib/mysql-connector-java-5.1.21-bin.jar"/>
 	<classpathentry kind="lib" path="G:/E-Commerce/E-Commerce/WebContent/lib/org.json.jar"/>
 	<classpathentry kind="lib" path="WebContent/lib/commons-net-2.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/commons-fileupload-1.2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/commons-io-1.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/json_simple-1.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

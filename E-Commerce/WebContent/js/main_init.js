@@ -48,7 +48,7 @@ function parseInitRequest(){
 
 			login_li.innerHTML="<a >"+name+"</a>";
 			login_li.onclick=function jumpPersonHtml(){
-				alert("个人中心");
+				window.location.href="usercenter.html";
 			};
 			
 			register_li.innerHTML="<a > 注销</a>";

@@ -69,7 +69,7 @@ function addElement(comid,comimage,comname){
 	 com_div.setAttribute("name", "com_div")
 	 com_div.setAttribute("class", "con");
 	 com_img.setAttribute("alt","更多....");
-	 com_img.setAttribute("src", "ftp://root:qq609150968.@115.28.228.39/root/img/"+comimage);
+	 com_img.setAttribute("src", "ftp://root:qq609150968.@115.28.228.39/img/"+comimage);
 	 com_label.innerHTML=comname;
 	 
 	 com_div.appendChild(com_a);
